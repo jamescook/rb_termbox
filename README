@@ -1,0 +1,4 @@
+Ruby termbox binding
+===
+
+Very early code. Run 'keyboard.rb' to get an idea of what you can do. I aim to fully emulate the sample termbox keyboard program. You need to compile termbox with -dynamiclib (or similar on *nix).
