@@ -4,4 +4,7 @@ Ruby termbox binding
 - Get termbox source and compile. Newer versions may build the shared lib for you, else tweak the gcc command as necessary.
 - See https://github.com/nsf/termbox/issues#issue/6 if on OSX (requires a tweak to termbox.c as of 2011-04-4)
 - Install bundler && bundle install
+- Edit sample/keyboard.rb and point Termbox.termbox_library_path to your shared lib.
 - Run ruby sample/keyboard.rb to get a feel for what you can do. It's a partial port of termbox's own sample keyboard application.  (Ctrl + Q to quit)
+
+
