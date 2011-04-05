@@ -1,0 +1,28 @@
+PATH
+  remote: .
+  specs:
+    rb_termbox (0.1.0)
+      ffi
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    diff-lcs (1.1.2)
+    ffi (1.0.7)
+      rake (>= 0.8.7)
+    rake (0.8.7)
+    rspec (2.5.0)
+      rspec-core (~> 2.5.0)
+      rspec-expectations (~> 2.5.0)
+      rspec-mocks (~> 2.5.0)
+    rspec-core (2.5.1)
+    rspec-expectations (2.5.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rb_termbox!
+  rspec
