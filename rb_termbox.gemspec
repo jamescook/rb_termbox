@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "rb_termbox"
 
-  s.add_dependency "ffi"
+  s.add_dependency "ffi", '>= 1.0.8'
   s.add_development_dependency "rspec"
 
   s.files              = `git ls-files`.split("\n")
