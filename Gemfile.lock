@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rb_termbox (0.1.0)
+    termbox (0.1.0)
       ffi (>= 1.0.8)
 
 GEM
@@ -22,5 +22,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rb_termbox!
   rspec
+  termbox!

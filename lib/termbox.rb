@@ -1,56 +1,49 @@
-require "bundler/setup"
-require "ffi"
+$: << File.dirname(__FILE__)
 
-lib = File.expand_path('../../', __FILE__)
-$:.unshift lib unless $:.include?(lib)
+require 'bundler/setup'
+require 'termbox/interface'
+require 'termbox/keys'
+require 'termbox/colors'
 
 module Termbox
-  extend FFI::Library
+  include Interface
+  include Keys
+  include Colors
 
-  class Cell < FFI::Struct
-    layout :ch, :ulong,
-           :fg, :uint16,
-           :bg, :uint16
-   end
+  @@inited = false
 
-  class Event < FFI::Struct
-    layout :type, :uint8,
-           :mod,  :uint8,
-           :key,  :uint16,
-           :ch,   :uint32,
-           :w,    :int32,
-           :h,    :int32
-   end
-
-  def termbox_library_path path=nil
-    if path
-      @library_path = path
+  def self.init(library_path = nil)
+    library_path ||= File.expand_path(File.join(File.dirname(__FILE__), '..', 'ext', 'termbox', 'libtermbox.so'))
+    if File.exist?(library_path)
+      self.initialize_library(library_path)
+      @@inited = self.tb_init ? true : false
+    else
+      raise("Could not find libtermbox.so.  Have you run ext/termbox/extconf.rb?")
     end
-
-    @library_path
   end
 
-  def initialize_library path=nil
-    ffi_lib path || termbox_library_path
-    attach_function :tb_init,        [], :int
-    attach_function :tb_shutdown,    [], :void
-    attach_function :tb_width,       [], :uint
-    attach_function :tb_height,      [], :uint
-    attach_function :tb_clear,       [], :void
-    attach_function :tb_present,     [], :void
-    attach_function :tb_set_cursor,  [:int, :int], :void
-    attach_function :tb_put_cell,    [:uint, :uint, :pointer], :void  #pointer follows TbCell
-    attach_function :tb_change_cell, [:uint, :uint, :ulong, :uint16, :uint16], :void
-    attach_function :tb_blit,        [:uint, :uint, :uint, :uint, :pointer], :void # pointer follows TbCell
-
-    # with 0 returns current input mode
-    attach_function :tb_select_input_mode, [:int], :int
-    attach_function :tb_peek_event, [:pointer, :int], :int
-    attach_function :tb_poll_event, [:pointer], :int
+  def self.shutdown
+    if @@inited    
+     self.tb_shutdown
+     @@inited = false
+    end
   end
 
-  module_function :initialize_library, :termbox_library_path
+  def self.input_mode=(mode)
+    case mode
+    when :esc
+      self.tb_select_input_mode(Interface::INPUT_MODE_ESC)
+    when :alt
+      self.tb_select_input_mode(Interface::INPUT_MODE_ALT)
+    else raise("Unknown input mode: use :esc or :alt")
+    end
+  end
 
-  require_relative  "termbox/keys"
-  require_relative  "termbox/colors"
+  def self.get
+    event = Interface::Event.new
+    value = self.tb_poll_event(event)
+    raise("Polling returned #{value.to_s}.") if value < 0
+    [event[:key], event[:mod], event[:ch]]
+  end
+
 end

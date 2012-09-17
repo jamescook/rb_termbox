@@ -5,11 +5,11 @@ $:.unshift lib unless $:.include?(lib)
 require 'termbox/version'
 
 Gem::Specification.new do |s|
-  s.name        = "rb_termbox"
+  s.name        = "termbox"
   s.version     = Termbox::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["James Cook"]
-  s.email       = ["jamecook@gmail.com"]
+  s.authors     = ["James Cook, Paul Schuegraf"]
+  s.email       = ["jamecook@gmail.com, paul@verticallabs.ca"]
   s.summary     = %q{Ruby binding to Termbox, a ncurses alternative.}
   #s.description = %q{}
 
