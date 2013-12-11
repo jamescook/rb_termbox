@@ -70,7 +70,7 @@ module Termbox
       "[" => 0x1B,
       "]" => 0x1D,
       "_" => 0x1F, # same as few others
-      " " => 0x20, # same as few others
+      " " => 0x20 # same as few others
     },
 
     "BACKSPACE" => 0x08,
@@ -80,6 +80,7 @@ module Termbox
     "RETURN"    => 0x0D,
     "ESC"       => 0x1B,
     "ESCAPE"    => 0x1B,
+    "SPACE"     => 0x20,
   }
 
   def lookup_key string
