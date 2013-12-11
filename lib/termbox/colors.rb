@@ -1,12 +1,13 @@
 module Termbox
   Colors = {
-    :black   => 0x00,
-    :red     => 0x01,
-    :green   => 0x02,
-    :yellow  => 0x03,
-    :blue    => 0x04,
-    :magenta => 0x05,
-    :cyan    => 0x06,
-    :white   => 0x07
+    :default  => 0x00,
+    :black    => 0x01,
+    :red      => 0x02,
+    :green    => 0x03,
+    :yellow   => 0x04,
+    :blue     => 0x05,
+    :magenta  => 0x06,
+    :cyan     => 0x07,
+    :white    => 0x08
   }
 end

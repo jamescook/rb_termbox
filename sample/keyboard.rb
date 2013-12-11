@@ -49,28 +49,28 @@ class Keyboard
   end
 
   def self.draw
-    Termbox.tb_change_cell(0,  0,  0x250C, Termbox::Colors[:white], Termbox::Colors[:black])
-    Termbox.tb_change_cell(79, 0,  0x2510, Termbox::Colors[:white], Termbox::Colors[:black])
-    Termbox.tb_change_cell(0,  23, 0x2514, Termbox::Colors[:white], Termbox::Colors[:black])
-    Termbox.tb_change_cell(79, 23, 0x2518, Termbox::Colors[:white], Termbox::Colors[:black])
+    Termbox.tb_change_cell(0,  0,  0x250C, Termbox::Colors[:white], Termbox::Colors[:default])
+    Termbox.tb_change_cell(79, 0,  0x2510, Termbox::Colors[:white], Termbox::Colors[:default])
+    Termbox.tb_change_cell(0,  23, 0x2514, Termbox::Colors[:white], Termbox::Colors[:default])
+    Termbox.tb_change_cell(79, 23, 0x2518, Termbox::Colors[:white], Termbox::Colors[:default])
 
 
     1.upto(79) do |i|
-      Termbox.tb_change_cell(i, 0, 0x2500, Termbox::Colors[:white], Termbox::Colors[:black])
-      Termbox.tb_change_cell(i, 23, 0x2500, Termbox::Colors[:white], Termbox::Colors[:black])
-      Termbox.tb_change_cell(i, 17, 0x2500, Termbox::Colors[:white], Termbox::Colors[:black])
-      Termbox.tb_change_cell(i, 4, 0x2500, Termbox::Colors[:white], Termbox::Colors[:black])
+      Termbox.tb_change_cell(i, 0, 0x2500, Termbox::Colors[:white], Termbox::Colors[:default])
+      Termbox.tb_change_cell(i, 23, 0x2500, Termbox::Colors[:white], Termbox::Colors[:default])
+      Termbox.tb_change_cell(i, 17, 0x2500, Termbox::Colors[:white], Termbox::Colors[:default])
+      Termbox.tb_change_cell(i, 4, 0x2500, Termbox::Colors[:white], Termbox::Colors[:default])
     end
 
     1.upto(23) do |i|
-      Termbox.tb_change_cell(0, i, 0x2502, Termbox::Colors[:white], Termbox::Colors[:black])
-      Termbox.tb_change_cell(79, i, 0x2502, Termbox::Colors[:white], Termbox::Colors[:black])
+      Termbox.tb_change_cell(0, i, 0x2502, Termbox::Colors[:white], Termbox::Colors[:default])
+      Termbox.tb_change_cell(79, i, 0x2502, Termbox::Colors[:white], Termbox::Colors[:default])
     end
 
-    Termbox.tb_change_cell(0, 17, 0x251C, Termbox::Colors[:white], Termbox::Colors[:black])
-    Termbox.tb_change_cell(79, 17, 0x2524, Termbox::Colors[:white], Termbox::Colors[:black])
-    Termbox.tb_change_cell(0, 4, 0x251C, Termbox::Colors[:white], Termbox::Colors[:black])
-    Termbox.tb_change_cell(79, 4, 0x2524, Termbox::Colors[:white], Termbox::Colors[:black])
+    Termbox.tb_change_cell(0, 17, 0x251C, Termbox::Colors[:white], Termbox::Colors[:default])
+    Termbox.tb_change_cell(79, 17, 0x2524, Termbox::Colors[:white], Termbox::Colors[:default])
+    Termbox.tb_change_cell(0, 4, 0x251C, Termbox::Colors[:white], Termbox::Colors[:default])
+    Termbox.tb_change_cell(79, 4, 0x2524, Termbox::Colors[:white], Termbox::Colors[:default])
 
     5.upto(17) do |i|
       Termbox.tb_change_cell(1, i, 0x2588, Termbox::Colors[:yellow], Termbox::Colors[:yellow])
