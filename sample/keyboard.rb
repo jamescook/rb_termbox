@@ -6,7 +6,7 @@ class Keyboard
   def self.run
 
     # Tell termbox where your shared lib is
-    Termbox.termbox_library_path File.join(File.expand_path("~/"), "work", "termbox_src", "termbox.dylib")
+    Termbox.termbox_library_path "termbox"
 
     # Call initialize_library once the above is set, this links us to the library C functions
     Termbox.initialize_library

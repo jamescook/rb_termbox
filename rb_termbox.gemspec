@@ -9,9 +9,8 @@ Gem::Specification.new do |s|
   s.version     = Termbox::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["James Cook"]
-  s.email       = ["jamecook@gmail.com"]
+  s.email       = ["jcook.rubyist@gmail.com"]
   s.summary     = %q{Ruby binding to Termbox, a ncurses alternative.}
-  #s.description = %q{}
 
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "rb_termbox"
