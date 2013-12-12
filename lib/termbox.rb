@@ -27,7 +27,7 @@ module Termbox
       @library_path = path
     end
 
-    @library_path
+    @library_path || "libtermbox"
   end
 
   def initialize_library path=nil

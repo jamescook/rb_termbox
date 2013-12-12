@@ -10,15 +10,15 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["James Cook"]
   s.email       = ["jcook.rubyist@gmail.com"]
-  s.summary     = %q{Ruby binding to Termbox, a ncurses alternative.}
-
-  s.required_rubygems_version = ">= 1.3.6"
-  s.rubyforge_project         = "rb_termbox"
+  s.summary     = s.description = %q{Ruby binding to Termbox, a ncurses alternative.}
+  s.homepage    = "http://github.com/jamescook/rb_termbox"
+  s.license     = "MIT"
 
   s.add_dependency "ffi"
   s.add_development_dependency "rspec"
 
   s.files              = `git ls-files`.split("\n")
   s.test_files         = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.require_paths      = ["lib"]
+  s.require_paths      = ["lib", "."]
+  s.extensions         = %w[ext/termbox/extconf.rb]
 end

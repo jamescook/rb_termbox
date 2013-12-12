@@ -2,7 +2,7 @@ load File.join(File.expand_path("."), "/lib/termbox.rb")
 
 class AllColors
   def self.run
-    Termbox.termbox_library_path "termbox"
+    Termbox.termbox_library_path File.expand_path("./libtermbox.so")
     Termbox.initialize_library
     start = Termbox.tb_init
     if start

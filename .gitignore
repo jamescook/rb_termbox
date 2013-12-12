@@ -1,2 +1,4 @@
 vendor/**
 .bundle/**
+*.o
+*.so
