@@ -1,46 +1,41 @@
-load File.join(File.expand_path("."), "/lib/termbox.rb")
-load File.join(File.expand_path("."), "sample/keyboard_keys.rb")
-load File.join(File.expand_path("."), "sample/keyboard_keys.rb")
+require 'termbox'
+load File.expand_path("../keyboard_keys.rb", __FILE__)
 
 class Keyboard
   def self.run
-
-    # Tell termbox where your shared lib is
-    Termbox.termbox_library_path "termbox"
-
     # Call initialize_library once the above is set, this links us to the library C functions
     Termbox.initialize_library
 
-    start = Termbox.tb_init
-    if start
+    if Termbox.tb_init
       Termbox.tb_select_input_mode 1 # TB_INPUT_ESC
       ev = Termbox::Event.new
       Termbox.tb_clear
       draw
       draw_word "Keyboard started. Press CTRL + Q to quit."
       Termbox.tb_present
+
       while Termbox.tb_poll_event(ev) >= 0 do
         case ev[:type]
-          when 1 #TB_EVENT_KEY
-            if ev[:key] == 0x11 # CTRL_Q
-              Termbox.tb_shutdown
-              exit
-            end
+        when 1 #TB_EVENT_KEY
+          if ev[:key] == 0x11 # CTRL_Q
+            Termbox.tb_shutdown
+            exit
+          end
 
-            Termbox.tb_clear
-            draw
-            if ev[:mod] > 0
-              draw_word "Pressed mod? (#{ev[:mod].inspect})", 60, 35
-            end
+          Termbox.tb_clear
+          draw
+          if ev[:mod] > 0
+            draw_word "Pressed mod? (#{ev[:mod].inspect})", 60, 35
+          end
 
-            if ev[:key] > 0
-              draw_word "Pressed #{Termbox.reverse_key_lookup(ev[:key]) || "?"}  -- #{ev[:ch].inspect}"
-            elsif ev[:ch]> 0
-              draw_word "Pressed key #{[ev[:ch]].pack("C*")} (#{ev[:ch]})"
-            end
-            Termbox.tb_present
-          else
-            draw_word "????"
+          if ev[:key] > 0
+            draw_word "Pressed #{Termbox.reverse_key_lookup(ev[:key]) || "?"}  -- #{ev[:ch].inspect}"
+          elsif ev[:ch]> 0
+            draw_word "Pressed key #{[ev[:ch]].pack("C*")} (#{ev[:ch]})"
+          end
+          Termbox.tb_present
+        else
+          draw_word "????"
         end
       end
     else
@@ -212,4 +207,3 @@ end
 if __FILE__ == $0
   Keyboard.run
 end
-
