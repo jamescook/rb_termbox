@@ -1,4 +1,3 @@
-require "bundler/setup"
 require "ffi"
 
 lib = File.expand_path('../../', __FILE__)
