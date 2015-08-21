@@ -45,8 +45,8 @@ module Termbox
 
     # with 0 returns current input mode
     attach_function :tb_select_input_mode, [:int], :int
-    attach_function :tb_peek_event, [:pointer, :int], :int
-    attach_function :tb_poll_event, [:pointer], :int
+    attach_function :tb_peek_event, [:pointer, :int], :int, {:blocking => true}
+    attach_function :tb_poll_event, [:pointer], :int, {:blocking => true}
   end
 
   module_function :initialize_library, :termbox_library_path
